@@ -1,0 +1,51 @@
+1.	Сосчитать количество клиентов, покупающих товар.
+select count(Client) as Клиент from Client
+2.	Сколько посредников поставляют товар для фирмы.
+select count(INNSeller) as Посредник from Seller where status like "посредник"
+3.	Вывести среднюю сумму сделки по проданному товару.
+select avg(CostUnit*Count) as Средняя сумма сделки from ClientGoods
+4.	Посчитать на какую сумму было всего поставлено товара.
+select sum(CostUnit*Count) as Общая сумма сделки from SellerGoods
+5.	Определите максимальное количество закупленного товара шт.(кг)
+select max(Count) from SellerGoods
+6.	Какая минимальная сумма покупки, на которую клиент сделал заказ.
+select min(CostUnit*Count) from ClientGoods
+7.	Посчитать на какую сумму было продано товара магазинам.
+select sum(CostUnit*Count) as Сумма проданного товара магазина from Client c, ClientGoods cg where c.INNClient = cg. INNClient and s.Status like “магазин”
+8.	Сосчитать общее количество видов закупленных фирмой вафель.
+select count(s.Goods) from SallerGoods s where s.Goods like 'Вафли%'
+9.	Выведите среднюю цену на растительное масло (закупочную).
+select avg(s.CostUnit) from SallerGoods s where s.Goods like 'масло подсолнечное'
+10.	Определите сколько всего было продано килограмм яблок.
+select sum(s.Count) from SallerGoods s where s.Goods like 'Яблоки%'
+11.	Определите какое количество картофеля закупили кафе.
+select sum(cg.Count) from SallerGoods sg, Client c, ClientGoods cg where cg.INNClient=c.INNClient and sg.ID=cg.ID and (c.Status like 'кафе' and sg.Goods like 'Картофель%')
+12.	Посчитать сколько клиентов купили перец черный молотый.
+select count(c.Client) from SallerGoods sg, Client c, ClientGoods cg where cg.INNClient=c.INNClient and sg.ID=cg.ID and  sg.Goods like 'Перец черный молотый'
+13.	Определить сколько наименований товара было куплено у посредников.
+select count(sg.Goods) from SallerGoods sg, Seller s where s.INNSeller=sg.INNSeller and  s.Status like 'посредник'
+14.	Определить минимальную цену за единицу проданного товара.
+select min(sg.CostUnit) from SallerGoods sg
+15.	Определите минимальную сумму на какую было закуплено товара.
+select min(costUnit*count) from ClientGoods
+16.	Определить максимальную сумму за товар, проданный магазинам.
+select max(cg.costUnit*cg.count) from ClientGoods cg, Client c where c.INNClient=cg.INNClient and c.status like 'магазин'
+17.	Определить со сколькими фирмами сотрудничает данная фирма.
+select count(Seller) from Seller
+18.	Определить минимальную сумму сделки по закупке товара у производителей.
+select min(sg.costUnit*sg.count) from SallerGoods sg, Seller s where s.INNSeller=sg.INNSeller and s.status like 'производитель'
+19.	Определить среднюю цену за пачку чая при покупке.
+select avg(costUnit) from SallerGoods where goods like 'Чай%'
+20.	Определите максимальную сумму прибыли за товар, проданный посреднику.
+21.	 Определите минимальную прибыль за товар, купленный у посредника.
+22.	 Какое количество наименований товара куплено у фирмы.
+select count(id) from ClientGoods
+23.	 Сколько в продаже видов печенья.
+select count(goods) from SallerGoods where goods like 'Печенье%'
+24.	 Какая максимальная сумма покупки, на которую клиент сделал заказ.
+select max(costunit*count) from clientgoods
+25.	 Определите среднюю прибыль от перепродажи масла.
+select avg(sg.costunit*sg.count)-avg(cg.costunit*cg.count)from clientgoods cg, sallergoods sg where cg.id=sg.id and sg.goods like 'масло%'
+26.	 Со сколькими посредниками сотрудничает фирма.
+select count(client) from Client where status like 'посредник'
+
