@@ -1,0 +1,67 @@
+1.	Выведите список студентов физико-математического факультета.
+select FIO from Student where 'Group' in 
+(select 'Group' from G where Kafedra in (select Kafedra from Kafedra where Decanat like 'Физико-математический'))
+
+2.	Студенты какой кафедры и факультета сдавали социологию.
+select kafedra, decanat from Kafedra where kafedra in 
+(select kafedra from G where G.'group' in 
+(select Student.'group' from Student where id_st in 
+(select id_st from Exzamen where predmet like 'Социология')))
+
+3.	Выведите кафедры, список студентов, список студентов в алфавитном порядке.
+select G.Kafedra, Student.fio from G, Student where G."Group"=Student."Group"
+order by fio
+
+4.	Вывести номера зачеток только студентов физико-технического факультета.
+select n_z from Zachetki where id_studenta in 
+(select id_st from Student where Student."Group" in 
+(select g."Group" from G where kafedra in 
+(select kafedra from Kafedra where decanat like 'Физико-технический')))
+
+5.	Выведите студентов физико-технического факультета сдавших иностранный язык на 5.
+select fio from Student where Student."Group" in 
+(select g."Group" from G where kafedra in 
+(select kafedra from Kafedra where decanat like 'Физико-технический'))
+and id_st = (select id_st from Exzamen where Predmet like 'Иностр%' and ball = 5)
+
+6.	Подсчитать сколько различных предметов сдавалось в сессию.
+select count(distinct predmet) from Exzamen
+
+7.	Напишите запрос, который выводит средний балл по экзаменам Васильевой.
+select avg(ball) from Exzamen where id_st = (select id_st from Student where fio like 'Васильева%')
+
+8.	Определите сколько человек учится на каждой специальности.
+
+9.	Напишите запрос, который покажет все группы физико-технического факультета.
+select G."Group" from G where kafedra in
+(select kafedra from Kafedra where decanat like 'Физико-технический')
+
+10.	Вывести список фамилий студентов получивших 5 баллов по дифференциальным уравнениям.
+select fio from Student where id_st in 
+(select id_st from Exzamen where Predmet like 'Дифф%' and ball = 5) 
+
+11.	Напишите запрос, который покажет,  сколько экзаменов  сдавал Шутов.
+select fio from Student where id_st in 
+(select id_st from Exzamen where Predmet like 'Дифф%' and ball = 5) 
+
+12.	Выведите название кафедры студентов, не сдавших хотя бы один экзамен.
+select kafedra from G where G."Group" in
+(select Student."Group" from Student where id_st in
+(select id_st from Exzamen where ball is null))
+
+13.	Подсчитать количество кафедр на каждом факультете.
+
+14.	Подсчитать количество пятерок на физико-математическом факультете.
+select kafedra from G where G."Group" in
+(select Student."Group" from Student where id_st in
+(select id_st from Exzamen where ball is null))
+
+15.	Определите номера зачетных книжек группы ФТ151
+select n_z from Zachetki where id_studenta in
+(select id_st from Student where Student."Group" like 'ФМ151')
+
+16.	Выведите перечень специальностей физико-математического факультета.
+select distinct special from Student where Student."Group" in
+(select G."Group" from G where kafedra in 
+(select kafedra from Kafedra where decanat like 'Физико-математический'))
+
