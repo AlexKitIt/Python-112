@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{{ super() }}
+
+<hr>
+<h2>Наши питомцы</h2>
+<ul>
+    {% for pet in pets %}
+    <li>
+        <p class="petname">Кличка питомца: <a href="{{ url_for('show_pets', petname=pet.petname) }}">{{ pet.petname }}</a>  </p>
+        <p class="name"> Владелец: {{ pet.name }}</p>
+        <div class="anonce"> Коротко и питомце: {{ pet.description[:240] }}</div>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+body{
+    background: rgb(101, 101, 237);
+    margin: 0;
+    padding: 0;
+}
+h3{
+    color: rgb(73, 28, 132)
+}
+.menu{
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    background-color: rgb(77, 76, 175);
+    padding: 30px;
+    box-sizing: border-box;
+    margin-top: 0;
+}
+.content{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+a{
+    font-style: italic;
+    color: rgb(34, 34, 172);
+}
+img{
+    display: inline
+    
+}
+.about{
+    text-align: center;
+}
+.not-found{
+    text-align: center;
+    color: red;
+    
+}
