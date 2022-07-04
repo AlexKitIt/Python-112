@@ -1,0 +1,30 @@
+body{
+    background: lightyellow;
+    font-family: Verdana;
+}
+.container{
+    width: 400px;
+    margin: 0 auto;
+}
+.container form, .container h2{
+    background: lightblue;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 6px;
+}
+.container h1{
+    text-align: center;
+}
+.container h3{
+    text-align: center;
+    border: 1px solid black;
+}
+h4{
+    text-align: center;
+}
+.description{
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+}
+
