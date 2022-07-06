@@ -1,0 +1,15 @@
+{% extends 'dog/base.html' %}
+
+{% block content %}
+{% load static %}
+<h1>Наши питомцы</h1>
+
+{% for dog in dogs %}
+<div class="pet">
+    <div class="image"><img src="{{ dog.image.url }}" alt="Здесь картинка собаки"></div>
+    <h2><a href="{% url 'info' dog.id %}">{{ dog.title }}</a></h2>
+    <p>{{ dog.description }}</p>
+</div>
+{% endfor %}
+
+{% endblock %}
