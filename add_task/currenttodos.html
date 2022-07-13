@@ -1,0 +1,24 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+
+<h1>Задачи для {{ user.username }}:</h1>
+
+<h2>Текущие задачи:</h2>
+{% for task in tasks %}
+    <div>
+        <h4>Название задачи:{{ task.title }}</h4>
+        <div class="text">
+            <p>Текст задачи: {{ task.memo }}</p>
+            <p>Время создания задачи: {{ task.created }}</p>
+            {% if task.important == True %}
+            <p>Это важная задача</p>
+            {% else %}
+            <p>Это не важная задача</p>
+            {% endif %}
+        </div>
+    </div>
+
+{% endfor %}
+
+{% endblock %}
