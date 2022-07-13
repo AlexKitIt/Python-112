@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сайт про чихуахуа</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+{% if user.is_authenticated  %}
+<div class="menu">
+    <div class="wrap">
+        <ul>
+            <li class="logo">Пользователь: {{ user.username }}</li>
+            <li><a href="{% url 'add_pet' %}">Добавить питомца</a></li>
+            <li><a href="{% url 'info' %}">Просмотреть всех питомцев</a></li>
+            <li>
+                <form action="{% url 'logout_user' %}" method="post">
+                    {% csrf_token %}
+                    <button>Выйти</button>
+                </form>
+            </li>
+        </ul>
+    </div>
+</div>
+{% else %}
+<div class="menu">
+    <div class="wrap">
+        <div class="logo"><a href="{% url 'index' %}"><img src="{% static 'dog/images.png' %}" alt=""></a></div>
+       <ul>
+           <li><a href="{% url 'signup' %}">Зарегистрироваться</a></li>
+           <li><a href="{% url 'login_user' %}">Войти</a></li>
+       </ul>
+    </div>
+</div>
+
+{% endif %}
+<div class="content">
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>
