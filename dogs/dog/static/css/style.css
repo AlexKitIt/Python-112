@@ -1,0 +1,31 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    background: rgb(137, 229, 223);
+    padding: 0;
+    margin: 0;
+}
+.main{
+    text-align: center
+}
+h1, h2{
+    text-align: center;
+}
+.pet{
+    background: rgb(94, 216, 147);
+    width: 360 px;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 6px solid rgb(214, 228, 138);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.one_pet{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+.info{
+    display: block;
+    margin: 0 auto;
+}
